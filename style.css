@@ -50,6 +50,7 @@ body {
     overflow: hidden;
 }
 
+
 #hiddenMessage {
     filter: blur(5px);
     transition: all 1s;

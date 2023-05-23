@@ -68,4 +68,67 @@ window.onload = async () => {
             console.error("Error during token verification:", error);
         }
     });
+
+    // Flashlight Effect using Three.js
+    let flashlight;
+
+    function initFlashlight() {
+        const container = document.getElementById('hiddenMessageContainer');
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+        camera.position.z = 5;
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(width, height);
+        container.appendChild(renderer.domElement);
+
+        flashlight = new THREE.SpotLight(0xffffff, 2);
+        flashlight.position.set(0, 0, 5);
+        flashlight.angle = Math.PI / 4;
+        flashlight.penumbra        = 0.2;
+        flashlight.decay = 2;
+        flashlight.distance = 50;
+        scene.add(flashlight);
+
+        const geometry = new THREE.PlaneGeometry(5, 2);
+        const material = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0 });
+
+        const hiddenMessage = new THREE.Mesh(geometry, material);
+        scene.add(hiddenMessage);
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            flashlight.position.copy(camera.position);
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+    }
+
+    document.getElementById('hiddenMessageContainer').addEventListener('mousemove', (event) => {
+        const container = document.getElementById('hiddenMessageContainer');
+        const rect = container.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        const normalizedX = (x / rect.width) * 2 - 1;
+        const normalizedY = -(y / rect.height) * 2 + 1;
+
+        const mouseVector = new THREE.Vector3(normalizedX, normalizedY, 0.5);
+        mouseVector.unproject(camera);
+
+        const dir = mouseVector.sub(camera.position).normalize();
+        const distance = -camera.position.z / dir.z;
+        const pos = camera.position.clone().add(dir.multiplyScalar(distance));
+
+        flashlight.target.position.copy(pos);
+    });
+
+    initFlashlight();
 };
+
