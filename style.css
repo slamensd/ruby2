@@ -1,20 +1,22 @@
+/* General styles */
 body {
+    font-family: Arial, sans-serif;
     background: radial-gradient(ellipse at center, #27aae1 0%, #27aae1 52%, #1c75bc 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    color: #fff;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
 }
 
 #app {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-#logo {
-    max-height: 40px;
+h1 {
+    text-align: center;
 }
 
 .btn {
@@ -23,7 +25,6 @@ body {
     font-weight: 900;
     position: relative;
     display: inline-flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     padding: 7px 10px 5px;
@@ -34,7 +35,7 @@ body {
     transition: all 0.4s ease;
     outline: none;
     box-shadow: none;
-    margin: 10px 0;
+    cursor: pointer;
 }
 
 .btn-primary {
@@ -43,22 +44,48 @@ body {
     color: #1c75bc;
 }
 
+#header {
+    margin-bottom: 20px;
+}
+
 #hiddenMessageContainer {
-    width: 100%;
-    height: 200px;
     position: relative;
+    width: 300px;
+    height: 100px;
+    margin-top: 20px;
     overflow: hidden;
 }
 
-
 #hiddenMessage {
-    filter: blur(5px);
-    transition: all 1s;
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 #hiddenMessage:hover {
-    filter: blur(0);
+    opacity: 1;
+}
+
+#hiddenMessage p {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 10px;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    #hiddenMessageContainer {
+        width: 200px;
+        height: 80px;
+    }
 }

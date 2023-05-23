@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ruby Duby Clue</title>
+    <title>WAGMI Token Authenticator</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <div id="app">
-        <img src="https://cdn.shopify.com/s/files/1/0673/5813/0452/files/NfrensLogo_b785e6d8-1a35-476b-b15e-36182db28804.png" id="logo">
         <h1>Ruby Duby Clue</h1>
-        <button id="connectBtn" class="btn btn-primary">Connect Wallet</button>
-        <div id="walletAddress"></div>
-        <div id="tokenBalance"></div>
-        <button id="verifyBtn" class="btn btn-primary">Verify Token</button>
-        <div id="verificationMessage"></div>
+        <div id="header">
+            <img src="https://cdn.shopify.com/s/files/1/0673/5813/0452/files/NfrensLogo_b785e6d8-1a35-476b-b15e-36182db28804.png" alt="Logo" style="max-height: 80px;">
+        </div>
+        <div id="walletSection">
+            <button id="connectBtn" class="btn btn-primary">Connect Wallet</button>
+            <div id="walletAddress"></div>
+            <div id="tokenBalance"></div>
+        </div>
+        <div id="verificationSection">
+            <button id="verifyBtn" class="btn">Verify Token</button>
+            <div id="verificationMessage"></div>
+        </div>
         <div id="hiddenMessageContainer">
-            <div id="hiddenMessage"></div>
+            <div id="hiddenMessage">
+                <p>We start at zero, book one unfurled, Page one's second letter "U", into our world. To page three we turn, the fifth letter to peek, On this journey of ours, the clues we seek. Fast forward to eight, a letter to meet, Put them together, the word is complete. A three-letter puzzle, for your mind's keep, Seek, find, and unravel, in this mystery deep.</p>
+            </div>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
     <script src="app.js"></script>
 </body>
 </html>
