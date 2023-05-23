@@ -1,0 +1,63 @@
+body {
+    background: radial-gradient(ellipse at center, #27aae1 0%, #27aae1 52%, #1c75bc 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+#app {
+    text-align: center;
+}
+
+#logo {
+    max-height: 40px;
+}
+
+.btn {
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 900;
+    position: relative;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 10px 5px;
+    height: 50px;
+    min-width: 192px;
+    border-radius: 25px;
+    border: 1px solid;
+    transition: all 0.4s ease;
+    outline: none;
+    box-shadow: none;
+    margin: 10px 0;
+}
+
+.btn-primary {
+    background: #fff;
+    border-color: #fff;
+    color: #1c75bc;
+}
+
+#hiddenMessageContainer {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+#hiddenMessage {
+    filter: blur(5px);
+    transition: all 1s;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#hiddenMessage:hover {
+    filter: blur(0);
+}
